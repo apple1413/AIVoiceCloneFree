@@ -117,14 +117,5 @@ window.onload = function() {
     submitEnterback();
 };
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDK1YJQG30"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HDK1YJQG30');
-</script>
-		
 
 	
