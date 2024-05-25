@@ -116,6 +116,15 @@ window.onload = function() {
     // 这里可以调用需要在所有资源加载后才能执行的函数
     submitEnterback();
 };
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDK1YJQG30"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HDK1YJQG30');
+</script>
 		
 
 	
