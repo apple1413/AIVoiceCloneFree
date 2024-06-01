@@ -1,37 +1,4 @@
- function submitForm() {
-			 var fileInput = document.getElementById('fileInput');
-			        if (fileInput.files.length === 0) {
-			            document.getElementById('myModal').classList.remove('hidden'); // 显示模态框
-			            return;
-			        }
-			 document.getElementById('loadingAnimation').classList.remove('hidden'); // 显示加载动画
-	        var form = document.getElementById('audioGenerationForm');
-	        var formData = new FormData(form);
-	        fetch('https://www.freetoolsplus.cn/upload', {
-	            method: 'POST',
-	            body: formData
-	        })
-	        .then(response => response.json()) 
-	        .then(data => {
-				  document.getElementById('loadingAnimation').classList.add('hidden'); // 隐藏加载动画
-	                if (data && data.result) {
-	                    const downloadUrl = data.result; 
-	                    const a = document.createElement('a');
-	                    a.href = downloadUrl;
-	                    a.download = 'filename-from-url.wav'; 
-	                    document.body.appendChild(a);
-	                    a.click();  
-	                    document.body.removeChild(a); 
-	                } else {
-	                    console.error('Failed to download file: No result URL.');
-	                    alert('Failed to download the file.');
-	                }
-	            })
-	            .catch(error => {
-	                console.error('Error:', error);
-	                alert('Error downloading the file.');
-	            });  
-	    }
+
 		function closeModal() {
 		    document.getElementById('myModal').classList.add('hidden'); 
 		}
@@ -51,8 +18,6 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		
-		    // 模拟的API URL，您需要替换成您的实际接口地址
 		    var apiUrl = 'https://www.freetoolsplus.cn/submit';
 		
 		    var data = {
@@ -67,7 +32,7 @@
 		        },
 		        body: JSON.stringify(data)
 		    })
-		    .then(response => response.json())  // 解析返回的JSON数据
+		    .then(response => response.json())  
 		    .then(data => {
 		        console.log('Success:', data);
 		        alert('Thank you for your feedback!');
@@ -85,8 +50,6 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		
-		    // 模拟的API URL，您需要替换成您的实际接口地址
 		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
 		
 		    var data = {
@@ -101,7 +64,7 @@
 		        },
 		        body: JSON.stringify(data)
 		    })
-		    .then(response => response.json())  // 解析返回的JSON数据
+		    .then(response => response.json())  
 		    .then(data => {
 		        console.log('Success:', data);
 		       
@@ -111,11 +74,78 @@
 		     
 		    });
 		}
+		function submitEnter1() {
+		    var key = "submitEnter1 enter";
+		    var value = "submitEnter1 enter";;
+		
+		    if (!key || !value) {
+		        alert("Please fill out both email and message fields.");
+		        return;
+		    }
+		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
+		
+		    var data = {
+		        key: key,
+		        value: value
+		    };
+		
+		    fetch(apiUrl, {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json'
+		        },
+		        body: JSON.stringify(data)
+		    })
+		    .then(response => response.json()) 
+		    .then(data => {
+		        console.log('Success:', data);
+		       
+		    })
+		    .catch((error) => {
+		        console.error('Error:', error);
+		     
+		    });
+			 alert("Not yet open");
+		}
+		function submitEnter59() {
+		    var key = "submitEnter59 enter";
+		    var value = "submitEnter59 enter";;
+		
+		    if (!key || !value) {
+		        alert("Please fill out both email and message fields.");
+		        return;
+		    }
+		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
+		    var data = {
+		        key: key,
+		        value: value
+		    };
+
+		    fetch(apiUrl, {
+		        method: 'POST',
+		        headers: {
+		            'Content-Type': 'application/json'
+		        },
+		        body: JSON.stringify(data)
+		    })
+		    .then(response => response.json()) 
+		    .then(data => {
+		        console.log('Success:', data);
+		       
+		    })
+		    .catch((error) => {
+		        console.error('Error:', error);
+		     
+		    });
+			 alert("Not yet open");
+		}
+		
 window.onload = function() {
     console.log("All content including images and stylesheets are fully loaded.");
-    // 这里可以调用需要在所有资源加载后才能执行的函数
     submitEnterback();
 };
+
+
 
 
 	
