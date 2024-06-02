@@ -338,6 +338,7 @@
       canvasCtx = canvas.getContext('2d');
       openPopupButton.addEventListener('click', function(event) {
           event.preventDefault();
+		
           if (!stream) {
               navigator.mediaDevices.getUserMedia({ audio: true })
                   .then(s => {
@@ -353,16 +354,17 @@
                   });
           }
       });
+	 
       function setupAudioContext() {
-          if (!audioContext) {
-              audioContext = new AudioContext();
-              const source = audioContext.createMediaStreamSource(stream);
-              analyser = audioContext.createAnalyser();
-              source.connect(analyser);
-              analyser.fftSize = 2048;
-              bufferLength = analyser.frequencyBinCount;
-              dataArray = new Uint8Array(bufferLength);
-          }
+           if (!audioContext) {
+                 audioContext = new AudioContext();
+             }
+             const source = audioContext.createMediaStreamSource(stream);
+             analyser = audioContext.createAnalyser();
+             source.connect(analyser);
+             analyser.fftSize = 2048;
+             bufferLength = analyser.frequencyBinCount;
+             dataArray = new Uint8Array(bufferLength);
       }
       recordButton.addEventListener('click', function(event) {
           event.preventDefault(); 
@@ -390,6 +392,11 @@
                   audioChunks = [];
               }
           };
+		  newRecorder.onstop = () => {
+		      stream.getTracks().forEach(track => track.stop());
+		      stream = null;
+		      closePopupButton.click();
+		  };
           return newRecorder;
       }
       function visualize() {
