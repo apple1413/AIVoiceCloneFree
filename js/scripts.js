@@ -18,7 +18,7 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		    var apiUrl = 'https://www.freetoolsplus.cn/submit';
+		    var apiUrl = 'http://fattigervoice.eastus.cloudapp.azure.com:8000/submit';
 		
 		    var data = {
 		        email: email,
@@ -139,6 +139,7 @@
 		    });
 			 alert("Not yet open");
 		}
+		
 		
 window.onload = function() {
     console.log("All content including images and stylesheets are fully loaded.");
