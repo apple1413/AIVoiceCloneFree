@@ -18,7 +18,7 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		    var apiUrl = 'http://fattigervoice.eastus.cloudapp.azure.com:8000/submit';
+		    var apiUrl = 'https://aivoiceclonefree.com/submit';
 		
 		    var data = {
 		        email: email,
@@ -50,7 +50,7 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
+		    var apiUrl = 'https://aivoiceclonefree.com/enter';
 		
 		    var data = {
 		        key: key,
@@ -82,7 +82,7 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
+		    var apiUrl = 'https://aivoiceclonefree.com/enter';
 		
 		    var data = {
 		        key: key,
@@ -115,7 +115,7 @@
 		        alert("Please fill out both email and message fields.");
 		        return;
 		    }
-		    var apiUrl = 'https://www.freetoolsplus.cn/enter';
+		    var apiUrl = 'https://aivoiceclonefree.com/enter';
 		    var data = {
 		        key: key,
 		        value: value

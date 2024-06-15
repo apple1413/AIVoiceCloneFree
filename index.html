@@ -486,17 +486,11 @@
 	var a=0
 	function sub(formData){
 		a=a+1;
-		
 		showLoadingAnimation()
-		
-		fetch('https://www.freetoolsplus.cn/upload', {
+		fetch('https://aivoiceclonefree.com/upload', {
 		    method: 'POST',
 		    body: formData
 		})
-	// fetch('http://localhost:8000/upload', {
-	//     method: 'POST',
-	//     body: formData
-	// })
 		.then(response => response.json())
 		.then(data => {
 		    document.getElementById('loadingAnimation').classList.add('hidden');
@@ -527,7 +521,6 @@
 		   };
 		});
 	}
-	
 	closePopupButton.addEventListener('click', function() {
 	    if (mediaRecorder) {
 	        if (mediaRecorder.state === 'recording') { 
@@ -550,7 +543,6 @@
 	    recordButton.textContent = 'Start recording';
 	    cancelAnimationFrame(animationId); 
 	});
-	
 	   function downLoad() {
 		   const a = document.createElement('a');
 		   a.href = downUrl;
