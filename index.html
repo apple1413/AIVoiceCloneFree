@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+ 	<meta charset="UTF-8" name="description" content="You only need ten seconds of voice to have free high-quality cloning voice" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Clone Voice Free</title>
     <link rel="icon" href="./img/favicon.ico" type="image/svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-	 <link rel="stylesheet" href="./css/styles.css">
-	<script src="./js/scripts.js"></script>
+	<link rel="stylesheet" href="./css/styles.css">
+	<script src="./js/scripts.js" async></script>
 </head>
 <body class="bg-white text-gray-800">
     <header class="bg-white border-b border-gray-200">
@@ -26,7 +26,6 @@
 		        <div class="loader"></div>
 		        <span id="countdown" class="text-white text-lg mt-4">50 seconds</span>
 		    </div>
-
     </header>
     <main class="container mx-auto px-4 py-8">
         <div class="text-center mb-12">
@@ -49,14 +48,12 @@
           <form id="audioGenerationForm" enctype="multipart/form-data">
 			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 1. Import your voice</h2>
 			<p class="text-gray-600 mb-4">You can upload a file or start recording  .</p>
-			<input type="file" id="fileInput" name="myfile" hidden/>
-			
+			<input type="file" id="fileInput" name="myfile" hidden/>	
 			<span id="fileName" class="text-blue-600"></span>
 			<button type="button" onclick="uploadFile()" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Import my voice (Recommended use)</button>
 			<p class="text-gray-1600 mb-4">or</p>
 			<span id="recordName" class="text-blue-600"></span>
 			 <button id="openPopupButton" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Start recording</button>
-			
 			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 2. Generate audio</h2>
 			<p class="text-gray-600 mb-4">Listen to text with your own voice，Supports English（EN), Chinese(ZH), French(FR), Japanese(JR), and Korean(KR).</p>
 			 <div class="mb-6">
@@ -70,23 +67,28 @@
 			        </select>
 			    </div>
 			    <textarea id="textContentId" name="textContent" class="w-full p-4 border rounded bg-gray-100 text-gray-700" rows="3" placeholder="You can enter the text of the recording you want to clone."></textarea>
-
 			<div id="messageDiv"></div>
 			<button type="button" onclick="submitForm()" class="bg-purple-600 text-white w-full py-2 rounded mt-6">Generate Audio</button>
 			  <audio id="audioPagePlayer"  controls style="width: 100%; margin-top: 10px;display: none;" ></audio>
 			  <button type="button" id="downLoadButton" onclick="downLoad()" class="bg-purple-600 text-white w-full py-2 rounded mt-6" style="display: none;">Download Audio</button>
 		 </form>
 		 <div id="overlay"></div>
-		
 		<div id="popup">
 		    <canvas id="visualizer"></canvas>
 		    <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>  <!-- 添加音频播放器 -->
 			<button id="recordButton">Start recording</button>
 			<button id="closePopupButton">Close</button>
 		</div>
-
     </div>
     </main>
+	<section class="container mx-auto px-3 py-8">
+	    <div class="flex justify-center">
+	        <iframe width="720" height="410" src="https://www.youtube.com/embed/KIHyo329xbw?si=dwZt5_qILplR_0tb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	    </div>
+		<div class="text-center mb-2">
+		       <p class="mt-4 text-gray-600">Part of the video content is from OpenVoice</p>
+		   </div>
+	</section>
 	<div id="myModal" class="hidden fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center">
 	    <div class="bg-white p-6 rounded shadow-lg">
 	        <h2 class="text-xl font-semibold text-gray-800"></h2>
@@ -95,16 +97,12 @@
 
 	    </div>
 	</div>
-	  <!-- Container -->
-	  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-	    <!-- Header -->
+	  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-12">
 	    <div class="mx-auto mb-8 flex max-w-3xl flex-col items-center text-center md:mb-12 lg:mb-16">
 	      <h2 class="text-3xl font-bold md:text-5xl">Frequently Asked</h2>
 	    
 	    </div>
-	    <!-- FAQ Items -->
 	    <div class="mb-8 grid grid-cols-1 justify-center gap-4 md:mb-12 lg:mb-16 lg:grid-cols-2">
-	      <!-- FAQ Left Col -->
 	      <div class="w-full">
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
@@ -143,7 +141,6 @@
 	          </div>
 	        </div>
 	      </div>
-	      <!-- FAQ Right Col -->
 	      <div class="w-full">
 			  <div class="mb-6 w-full rounded-xl bg-white p-8">
 			    <div class="flex cursor-pointer items-start justify-between">
@@ -159,10 +156,7 @@
 			   <p class="tracking-[0.2px] mb-4">Are there voices from multiple individuals in your audio?</p>
 			   <p class="tracking-[0.2px] mb-4">Are there extended periods of silence in the reference audio?</p>
 			 </div>
-
-
 			  </div>
-			  
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
 	            <div class="text-xl font-bold">How long should the voice sample I upload be?</div>
@@ -193,43 +187,30 @@
 	  </div>
 	</section>
 
-
 <section class="relative">
-  <!-- BG Image -->
   <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fa_Get%20Started%20BG.svg" alt="" class="absolute -z-[1] h-full w-full object-cover" />
-  <!-- Container -->
   <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
-    <!-- Component -->
     <div class="flex flex-col items-center">
-      <!-- Heading Content -->
       <div class="mb-8 max-w-3xl text-center md:mb-12 lg:mb-16">
-        <h2 class="mb-4 mt-6 text-3xl font-extrabold text-white md:text-5xl">Transparent price</h2>
-        
+        <h2 class="mb-4 mt-6 text-3xl font-extrabold text-white md:text-5xl">Transparent price</h2>      
       </div>
-      <!-- Pricing Cards -->
       <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
-        <!-- Pricing Card -->
         <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
           <div class="mb-4 rounded-lg bg-[#cf8f1329] px-5 py-2 text-[#cf8f13]">
             <p class="font-bold">Basic</p>
           </div>
-       
           <h2 class="my-6 pb-8 text-3xl font-extrabold md:text-5xl">Free<span class="text-sm font-light text-[#636262]"</span>
           </h2>
 		  <a href="#" class="mb-5 inline-block w-full rounded-lg bg-[#c9fd02] px-6 py-4 text-center font-bold text-black transition hover:border-black hover:bg-neutral-900 hover:text-[#636262] md:mb-6 lg:mb-8">Get started</a>
-
           <div class="mt-2 flex flex-row">
             <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
             <p>30 second of voice generation.</p>
           </div>
-
         </div>
-        <!-- Pricing Card -->
         <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
           <div class="mb-4 rounded-lg bg-[#0caeb929] px-5 py-2 text-[#0caeb9]">
             <p class="font-bold">Frequency payment(Not yet open)</p>
           </div>
-          
           <h2 class="my-6 pb-8 text-3xl font-extrabold md:text-5xl">$1<span class="text-sm font-light text-[#636262]">/10 times</span>
           </h2>
           <button onclick="submitEnter1()" class="mb-5 inline-block w-full rounded-lg bg-neutral-900 px-6 py-4 text-center font-bold text-[#636262] transition hover:border-black hover:bg-[#c9fd02] hover:text-black lg:mb-8">Get started</button>
@@ -244,10 +225,8 @@
           <div class="mt-2 flex flex-row">
             <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
             <p>Improved audio quality for clearer, more natural sounds.</p>
-          </div>
-      
+          </div>  
         </div>
-        <!-- Pricing Card -->
         <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
           <div class="mb-4 rounded-lg bg-[#c013cf29] px-5 py-2 text-[#c013cf]">
             <p class="font-bold">Monthly payment(Not yet open)</p>
@@ -277,9 +256,9 @@
     </div>
   </div>
 </section>
-<!-- Section Contact -->
+
 <section>
-  <!-- Contact Container -->
+
   <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
     <!-- Contact Component -->
     <div class="">
