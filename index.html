@@ -460,15 +460,7 @@
 		   formData.append('myfile', audioBlob, 'recording.wav');  
 		}
 		console.log("start....")
-		var content = this.value;
-		 var chineseCount = (content.match(/[\u4e00-\u9fff]/g) || []).length; 
-		 var nonChineseWords = content.replace(/[\u4e00-\u9fff]/g, ' '); 
-		 var englishWordCount = (nonChineseWords.match(/\b\w+\b/g) || []).length;
-		 var total = chineseCount + englishWordCount;
-		 if (total > 50) {
-		  alert(The free version cannot exceed 50 words)
-		  return;
-		 }
+		
         sub(formData)
     }	
 	var a=0
