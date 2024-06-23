@@ -345,10 +345,7 @@
 				    document.getElementById('loadingAnimation').classList.add('hidden');
 				    if (data && data.result) {
 				        const downloadUrl = data.result;
-						if(downloadUrl.length()==0){
-							alert("Recording duration is less than 10 seconds, please record again!")
-							return;
-						}
+						
 						if (downloadUrl) {
 								const audioPlayer = document.getElementById('audioPagePlayer');
 								audioPlayer.src = downloadUrl;
