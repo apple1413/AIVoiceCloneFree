@@ -121,11 +121,11 @@
 		             }, 1000);
 		         }
 		 
-		         function showLoadingAnimation() {
-		             var display = document.querySelector('#countdown');
-		             startCountdown(30, display);
-		             document.getElementById('loadingAnimation').classList.remove('hidden');
-		         }
+		function showLoadingAnimation() {
+		 var display = document.querySelector('#countdown');
+		 startCountdown(30, display);
+		 document.getElementById('loadingAnimation').classList.remove('hidden');
+		}
 				 
 		function submitForm() {
 			var fileInput = document.getElementById('fileInput');
