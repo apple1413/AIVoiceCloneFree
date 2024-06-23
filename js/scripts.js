@@ -126,6 +126,7 @@
 		             startCountdown(30, display);
 		             document.getElementById('loadingAnimation').classList.remove('hidden');
 		         }
+				 
 		function submitForm() {
 			var fileInput = document.getElementById('fileInput');
 			if (audioBlob&&fileInput.files.length != 0) {
