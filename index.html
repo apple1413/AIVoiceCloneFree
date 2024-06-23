@@ -16,67 +16,75 @@
 	    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 </head>
 <body class="bg-white text-gray-800">
-   <header class="top-0 z-20 w-full">
-      		<nav class="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-      			<div class="flex"><a class="-m-1.5 ltr:ml-0.5 rtl:mr-0.5 p-1.5" href="/"><img class="h-8 w-auto" src="./img/logo.svg?v=0425" width="32" height="24" alt="free ai voice cloning" /></a></div>
-   			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      			<div class="hidden ltr:lg:ml-14 rtl:lg:mr-14 lg:flex lg:flex-1 lg:gap-x-6"><a class="text-sm font-semibold leading-6 header-link header-choose-color" href="/">AI Voice cloning</a></div>
-      		</nav>
-      		<div hidden="" style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"></div>
-      	</header>
-       <main class="container mx-auto px-4 py-8">
-           <div class="text-center mb-12">
-               <h1 class="text-4xl font-bold text-gray-800"> Free AI voice cloning</h1>
-               <h2 class="mt-4 text-gray-600">Voice cloning instantly, free of charge, unlimited usage, no registration needed, try it!<h2/>
-           </div>
-           <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
-               <div class="bg-white shadow-md rounded-lg p-8">
-                   <ul class="space-y-2 text-gray-600">
-                       <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Instant cloning can be achieved by simply uploading a 10 second voice sample.</li>
-                       <li class="flex items-center"  style="margin-bottom: 2rem" ><i class="fas fa-check text-green-500 mr-2" ></i>Highly similar and realistic reproduction.</li>
-                       <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2" ></i>Supports multiple languages and accents.</li>
-                       <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Secure privacy, protecting user data.</li>
-                       <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Simple interface, easy to use.</li>
-                       <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Generate and download the voice with one click.</li>
-   					<li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>You can free to use.</li>
-                   </ul>
-               </div>
-             <form id="audioGenerationForm" enctype="multipart/form-data">
-   			<p class="text-xl font-semibold text-gray-800 mb-4">Step 1. Import vocal samples</p>
-   			<p class="text-gray-600 mb-4">You can upload a file or start recording(no less than 10 seconds).</p>
-   			<input type="file" id="fileInput" name="myfile" hidden/>	
-   			<span id="fileName" class="text-blue-600"></span>
-   			<button type="button" onclick="uploadFile()" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Import voice (Recommended use)</button>
-   			<p class="text-gray-1600 mb-4">or</p>
-   			<span id="recordName" class="text-blue-600"></span>
-   			 <button id="openPopupButton" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Start recording</button>
-   			<p class="text-xl font-semibold text-gray-800 mb-4">Step 2. Generate audio</p>
-   			<p class="text-gray-600 mb-4">Listen to text with your own voice，Supports English（EN), Chinese(ZH), French(FR), Japanese(JR), and Korean(KR).</p>
-   			 <div class="mb-6">
-   			        <select id="languageSelect" name="language" class="w-full p-2 border rounded bg-gray-200 text-gray-600">
-   			            <option value="en_default">EN</option>
-   						<option value="zh_default">ZH</option>
-   						<option value="es_default">ES</option>
-   						 <option value="fr_default">FR</option>
-   						  <option value="jp_default">JP</option>
-   						   <option value="kr_default">KR</option>
-   			        </select>
-   			    </div>
-   			    <textarea id="textContentId" name="textContent" class="w-full p-4 border rounded bg-gray-100 text-gray-700" rows="3" placeholder="You can enter the text of the recording you want to clone."></textarea>
-   			<div id="messageDiv"></div>
-   			<button type="button" onclick="submitForm()" class="bg-purple-600 text-white w-full py-2 rounded mt-6">Generate Audio</button>
-   			  <audio id="audioPagePlayer"  controls style="width: 100%; margin-top: 10px;display: none;" ></audio>
-   			  <button type="button" id="downLoadButton" onclick="downLoad()" class="bg-purple-600 text-white w-full py-2 rounded mt-6" style="display: none;">Download Audio</button>
-   		 </form>
-   		 <div id="overlay"></div>
-   		<div id="popup">
-   		    <canvas id="visualizer"></canvas>
-   		    <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>  
-   			<button id="recordButton">Start recording</button>
-   			<button id="closePopupButton">Close</button>
-   		</div>
-       </div>
-       </main>
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="./img/logo.svg" alt="Speechify Studio Logo" class="h-8 w-18">
+                <!-- <div class="text-xl font-bold text-purple-600">AI Clone Voice Free</div> -->
+            </div>
+           <!-- <nav class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800">AI Voice Generator</a>
+            </nav> -->
+        </div>
+		  <div id="loadingAnimation" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+		        <div class="loader"></div>
+		        <span id="countdown" class="text-white text-lg mt-4">39 seconds</span>
+		    </div>
+    </header>
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800">AI Clone Voice Free </h1>
+            <p class="mt-4 text-gray-600">With just a 10s voice sample, you can instantly clone your voice for free, without registration or special equipment, and as many times as you want.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
+            <div class="bg-white shadow-md rounded-lg p-8">
+                <!-- <h2 class="text-2xl font-bold text-gray-1800 mb-8">The characteristics of AI voice cloning:</h2> -->
+                <ul class="space-y-2 text-gray-600">
+                    <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Instant cloning can be achieved by simply uploading a 10 second voice sample</li>
+                    <li class="flex items-center"  style="margin-bottom: 2rem" ><i class="fas fa-check text-green-500 mr-2" ></i>Highly similar and realistic reproduction.</li>
+                    <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2" ></i>Supports multiple languages and accents.</li>
+                    <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Secure privacy, protecting user data.</li>
+                    <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Simple interface, easy to use.</li>
+                    <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Generate and download the voice with one click.</li>
+					<li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>You can free to use.</li>
+                </ul>
+            </div>
+          <form id="audioGenerationForm" enctype="multipart/form-data">
+			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 1. Import no less than 10 seconds of vocal samples</h2>
+			<p class="text-gray-600 mb-4">You can upload a file or start recording  .</p>
+			<input type="file" id="fileInput" name="myfile" hidden/>	
+			<span id="fileName" class="text-blue-600"></span>
+			<button type="button" onclick="uploadFile()" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Import my voice (Recommended use)</button>
+			<p class="text-gray-1600 mb-4">or</p>
+			<span id="recordName" class="text-blue-600"></span>
+			 <button id="openPopupButton" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Start recording</button>
+			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 2. Generate audio</h2>
+			<p class="text-gray-600 mb-4">Listen to text with your own voice，Supports English（EN), Chinese(ZH), French(FR), Japanese(JR), and Korean(KR).</p>
+			 <div class="mb-6">
+			        <select id="languageSelect" name="language" class="w-full p-2 border rounded bg-gray-200 text-gray-600">
+			            <option value="en_default">EN</option>
+						<option value="zh_default">ZH</option>
+						<option value="es_default">ES</option>
+						 <option value="fr_default">FR</option>
+						  <option value="jp_default">JP</option>
+						   <option value="kr_default">KR</option>
+			        </select>
+			    </div>
+			    <textarea id="textContentId" name="textContent" class="w-full p-4 border rounded bg-gray-100 text-gray-700" rows="3" placeholder="You can enter the text of the recording you want to clone."></textarea>
+			<div id="messageDiv"></div>
+			<button type="button" onclick="submitForm()" class="bg-purple-600 text-white w-full py-2 rounded mt-6">Generate Audio</button>
+			  <audio id="audioPagePlayer"  controls style="width: 100%; margin-top: 10px;display: none;" ></audio>
+			  <button type="button" id="downLoadButton" onclick="downLoad()" class="bg-purple-600 text-white w-full py-2 rounded mt-6" style="display: none;">Download Audio</button>
+		 </form>
+		 <div id="overlay"></div>
+		<div id="popup">
+		    <canvas id="visualizer"></canvas>
+		    <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>  <!-- 添加音频播放器 -->
+			<button id="recordButton">Start recording</button>
+			<button id="closePopupButton">Close</button>
+		</div>
+    </div>
+    </main>
 	<section class="container mx-auto px-3 py-8">
 	    <div class="flex justify-center">
 	        <iframe width="720" height="410" src="https://www.youtube.com/embed/KIHyo329xbw?si=dwZt5_qILplR_0tb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
