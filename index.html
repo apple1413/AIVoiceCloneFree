@@ -15,24 +15,32 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 	    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 </head>
-body class="bg-white text-gray-800">
-   	<header class="top-0 z-20 w-full">
-   		<nav class="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-   			<div class="flex"><a class="-m-1.5 ltr:ml-0.5 rtl:mr-0.5 p-1.5" href="/"><img class="h-8 w-auto" src="./img/logo.svg?v=0425" width="32" height="24" alt="free ai voice cloning" /></a></div>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   			<div class="hidden ltr:lg:ml-14 rtl:lg:mr-14 lg:flex lg:flex-1 lg:gap-x-6"><a class="text-sm font-semibold leading-6 header-link header-choose-color" href="/">AI Voice cloning</a></div>
-   		</nav>
-   		<div hidden="" style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"></div>
-   	</header>
+<body class="bg-white text-gray-800">
+    <header class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="./img/logo.svg" alt="Speechify Studio Logo" class="h-8 w-18">
+                <!-- <div class="text-xl font-bold text-purple-600">AI Clone Voice Free</div> -->
+            </div>
+           <!-- <nav class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800">AI Voice Generator</a>
+            </nav> -->
+        </div>
+		  <div id="loadingAnimation" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+		        <div class="loader"></div>
+		        <span id="countdown" class="text-white text-lg mt-4">39 seconds</span>
+		    </div>
+    </header>
     <main class="container mx-auto px-4 py-8">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800"> Free AI voice cloning</h1>
-            <h2 class="mt-4 text-gray-600">Voice cloning instantly, free of charge, unlimited usage, no registration needed, try it!<h2/>
+            <h1 class="text-4xl font-bold text-gray-800">AI Clone Voice Free </h1>
+            <p class="mt-4 text-gray-600">With just a 10s voice sample, you can instantly clone your voice for free, without registration or special equipment, and as many times as you want.</p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
             <div class="bg-white shadow-md rounded-lg p-8">
+                <!-- <h2 class="text-2xl font-bold text-gray-1800 mb-8">The characteristics of AI voice cloning:</h2> -->
                 <ul class="space-y-2 text-gray-600">
-                    <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Instant cloning can be achieved by simply uploading a 10 second voice sample.</li>
+                    <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Instant cloning can be achieved by simply uploading a 10 second voice sample</li>
                     <li class="flex items-center"  style="margin-bottom: 2rem" ><i class="fas fa-check text-green-500 mr-2" ></i>Highly similar and realistic reproduction.</li>
                     <li class="flex items-center"  style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2" ></i>Supports multiple languages and accents.</li>
                     <li class="flex items-center" style="margin-bottom: 2rem"><i class="fas fa-check text-green-500 mr-2"></i>Secure privacy, protecting user data.</li>
@@ -42,15 +50,15 @@ body class="bg-white text-gray-800">
                 </ul>
             </div>
           <form id="audioGenerationForm" enctype="multipart/form-data">
-			<p class="text-xl font-semibold text-gray-800 mb-4">Step 1. Import vocal samples</p>
-			<p class="text-gray-600 mb-4">You can upload a file or start recording(no less than 10 seconds).</p>
+			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 1. Import no less than 10 seconds of vocal samples</h2>
+			<p class="text-gray-600 mb-4">You can upload a file or start recording  .</p>
 			<input type="file" id="fileInput" name="myfile" hidden/>	
 			<span id="fileName" class="text-blue-600"></span>
-			<button type="button" onclick="uploadFile()" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Import voice (Recommended use)</button>
+			<button type="button" onclick="uploadFile()" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Import my voice (Recommended use)</button>
 			<p class="text-gray-1600 mb-4">or</p>
 			<span id="recordName" class="text-blue-600"></span>
 			 <button id="openPopupButton" class="bg-blue-600 text-white w-full py-2 rounded mb-6">Start recording</button>
-			<p class="text-xl font-semibold text-gray-800 mb-4">Step 2. Generate audio</p>
+			<h2 class="text-xl font-semibold text-gray-800 mb-4">Step 2. Generate audio</h2>
 			<p class="text-gray-600 mb-4">Listen to text with your own voice，Supports English（EN), Chinese(ZH), French(FR), Japanese(JR), and Korean(KR).</p>
 			 <div class="mb-6">
 			        <select id="languageSelect" name="language" class="w-full p-2 border rounded bg-gray-200 text-gray-600">
@@ -71,41 +79,66 @@ body class="bg-white text-gray-800">
 		 <div id="overlay"></div>
 		<div id="popup">
 		    <canvas id="visualizer"></canvas>
-		    <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>  
+		    <audio id="audioPlayer" controls style="width: 100%; margin-top: 10px;"></audio>  <!-- 添加音频播放器 -->
 			<button id="recordButton">Start recording</button>
 			<button id="closePopupButton">Close</button>
 		</div>
     </div>
     </main>
+	<section class="container mx-auto px-3 py-8">
+	    <div class="flex justify-center">
+	        <iframe width="720" height="410" src="https://www.youtube.com/embed/KIHyo329xbw?si=dwZt5_qILplR_0tb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	    </div>
+		<!-- <div class="text-center mb-2">
+		       <p class="mt-4 text-gray-600">Part of the video content is from OpenVoice</p>
+		   </div> -->
+	</section>
 	<div id="myModal" class="hidden fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center">
 	    <div class="bg-white p-6 rounded shadow-lg">
 	        <h2 class="text-xl font-semibold text-gray-800"></h2>
 	        <p class="text-gray-600 my-4">Please record or upload the recording file,  choose one of the above two methods .</p>
 	      <button onclick="closeModal()" class="bg-blue-600 text-white px-4 py-2 rounded">OK</button>
+
 	    </div>
 	</div>
 	  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-12">
+	    <div class="mx-auto mb-8 flex max-w-3xl flex-col items-center text-center md:mb-12 lg:mb-16">
+	      <h2 class="text-3xl font-bold md:text-5xl">Frequently Asked</h2>
+	    
+	    </div>
 	    <div class="mb-8 grid grid-cols-1 justify-center gap-4 md:mb-12 lg:mb-16 lg:grid-cols-2">
 	      <div class="w-full">
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
-	            <h2 class="text-xl font-bold">What is voice cloning?</h2>   
+	            <div class="text-xl font-bold">What is Voice Cloning?</div>
+	            <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+	              <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+	              <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+	            </div>
 	          </div>
 	          <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
-	            <p class="tracking-[0.2px]">Voice cloning uses AI and machine learning to recreate someone's voice by analyzing their speech patterns and generating new speech that mimics the original speaker. It has applications in entertainment, accessibility, digital assistants, and dubbing.</p>
+	            <p class="tracking-[0.2px]">AI speech cloning, also known as speech synthesis or speech imitation, is a technique that uses machine learning to simulate the voice of a specific person. This technology requires a certain amount of voice data to analyze and learn individual unique voice features. After training, it can generate speech that sounds very similar to the original sound.</p>
 	          </div>
 	        </div>
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
-	            <h2 class="text-xl font-bold">Is using voice cloning free?</h2>
+	            <div class="text-xl font-bold">Is using this website free?</div>
+	            <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+	              <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+	              <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+	            </div>
 	          </div>
 	          <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
-	            <p class="tracking-[0.2px]">You can generate short sounds for free. If a longer cloning time is required, we will provide a paid subscription service in the future.</p>
+	            <p class="tracking-[0.2px]">Our website offers a tiered service model. Basic services are free, and you can generate short sounds. If a longer cloning time is required, we will provide a paid subscription service in the future, including advanced voice editing tools and more voice customization options.</p>
 	          </div>
 	        </div>
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
-	            <h2 class="text-xl font-bold">How to clone voice?</h2>
+	            <div class="text-xl font-bold"> How do I start using this website to create cloned voices?</div>
+	            <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+	              <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+	              <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+	            </div>
 	          </div>
 	          <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
 	            <p class="tracking-[0.2px]">You can choose the recording or import sound button to upload the sound file that needs to be cloned, and then select the language type to be generated and the cloned text from the input box. Click the "Generate Audio" button and wait for a moment to play and download the cloned sound.</p>
@@ -115,21 +148,41 @@ body class="bg-white text-gray-800">
 	      <div class="w-full">
 			  <div class="mb-6 w-full rounded-xl bg-white p-8">
 			    <div class="flex cursor-pointer items-start justify-between">
-			      <h2 class="text-xl font-bold">Why does the sound of cloning voice not sound like it?</h2>
+			      <div class="text-xl font-bold">Why does the sound of cloning not sound like it?</div>
+			      <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+			        <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+			        <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+			      </div>
 			    </div>
 			 <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
 			   <p class="tracking-[0.2px] mb-4">Is there any background noise in your reference audio, or is it crystal clear? High-quality reference speeches are available <a href="https://aiartes.com/voiceai" class="link-blue" target="_blank" rel="noopener noreferrer">here</a>.</p>
-			   <p class="tracking-[0.2px] mb-4">Is the uploaded audio longer than 10 seconds?</p>
+			   <p class="tracking-[0.2px] mb-4">Is the duration of your audio sufficient for processing?</p>
 			   <p class="tracking-[0.2px] mb-4">Are there voices from multiple individuals in your audio?</p>
-			   <p class="tracking-[0.2px] mb-4">Are there extended periods of silence in your audio?</p>
+			   <p class="tracking-[0.2px] mb-4">Are there extended periods of silence in the reference audio?</p>
 			 </div>
 			  </div>
 	        <div class="mb-6 w-full rounded-xl bg-white p-8">
 	          <div class="flex cursor-pointer items-start justify-between">
-	            <h2 class="text-xl font-bold">How long should the voice cloning sample I upload be?</h2>
+	            <div class="text-xl font-bold">How long should the voice sample I upload be?</div>
+	            <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+	              <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+	              <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+	            </div>
 	          </div>
 	          <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
 	            <p class="tracking-[0.2px]">To ensure the quality and naturalness of the cloned sound, we recommend uploading a clear voice recording for at least 15 seconds. The higher the recording quality, the more realistic the generated cloned sound will be.</p>
+	          </div>
+	        </div>
+	        <div class="mb-6 w-full rounded-xl bg-white p-8">
+	          <div class="flex cursor-pointer items-start justify-between">
+	            <div class="text-xl font-bold">Is using this website safe? Will my data be protected?</div>
+	            <div class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center">
+	              <div class="absolute h-5 w-0.5 bg-[#0b0b1f]"></div>
+	              <div class="h-0.5 w-5 bg-[#0b0b1f]"></div>
+	            </div>
+	          </div>
+	          <div class="w-full max-w-[640px] pt-4 lg:max-w-[960px]">
+	            <p class="tracking-[0.2px]">We take user privacy and data security very seriously. All data transmissions are protected through encryption, and we comply with strict data protection regulations to manage and protect user information.</p>
 	          </div>
 	        </div>
 	      </div>
@@ -137,13 +190,88 @@ body class="bg-white text-gray-800">
 	    <p class="text-center tracking-[0.2px]"></p>
 	  </div>
 	</section>
+
+<section class="relative">
+  <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fa_Get%20Started%20BG.svg" alt="" class="absolute -z-[1] h-full w-full object-cover" />
+  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+    <div class="flex flex-col items-center">
+      <div class="mb-8 max-w-3xl text-center md:mb-12 lg:mb-16">
+        <h2 class="mb-4 mt-6 text-3xl font-extrabold text-white md:text-5xl">Transparent price</h2>      
+      </div>
+      <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3 md:gap-4">
+        <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
+          <div class="mb-4 rounded-lg bg-[#cf8f1329] px-5 py-2 text-[#cf8f13]">
+            <p class="font-bold">Basic</p>
+          </div>
+          <h2 class="my-6 pb-8 text-3xl font-extrabold md:text-5xl">Free<span class="text-sm font-light text-[#636262]"</span>
+          </h2>
+		  <a href="#" class="mb-5 inline-block w-full rounded-lg bg-[#c9fd02] px-6 py-4 text-center font-bold text-black transition hover:border-black hover:bg-neutral-900 hover:text-[#636262] md:mb-6 lg:mb-8">Get started</a>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>30 second of voice generation.</p>
+          </div>
+        </div>
+        <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
+          <div class="mb-4 rounded-lg bg-[#0caeb929] px-5 py-2 text-[#0caeb9]">
+            <p class="font-bold">Frequency payment(Not yet open)</p>
+          </div>
+          <h2 class="my-6 pb-8 text-3xl font-extrabold md:text-5xl">$1<span class="text-sm font-light text-[#636262]">/10 times</span>
+          </h2>
+          <button onclick="submitEnter1()" class="mb-5 inline-block w-full rounded-lg bg-neutral-900 px-6 py-4 text-center font-bold text-[#636262] transition hover:border-black hover:bg-[#c9fd02] hover:text-black lg:mb-8">Get started</button>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Clone up to five minutes of audio.</p>
+          </div>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Customize the emotional tone of the voice.</p>
+          </div>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Improved audio quality for clearer, more natural sounds.</p>
+          </div>  
+        </div>
+        <div class="mx-auto flex w-full max-w-[416px] flex-col items-start rounded-md bg-[#131313] p-8 text-white">
+          <div class="mb-4 rounded-lg bg-[#c013cf29] px-5 py-2 text-[#c013cf]">
+            <p class="font-bold">Monthly payment(Not yet open)</p>
+          </div>
+          <h2 class="my-6 pb-8 text-3xl font-extrabold md:text-5xl">$9.9<span class="text-sm font-light text-[#636262]">/month</span>
+          </h2>
+          <button onclick="submitEnter59()" class="mb-5 inline-block w-full rounded-lg bg-neutral-900 px-6 py-4 text-center font-bold text-[#636262] transition hover:border-black hover:bg-[#c9fd02] hover:text-black lg:mb-8">Get started</button>
+			<div class="mt-2 flex flex-row">
+			  <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+			  <p>Unlimited generation times</p>
+			</div>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Clone up to five minutes of audio.</p>
+          </div>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Customize the emotional tone of the voice.</p>
+          </div>
+          <div class="mt-2 flex flex-row">
+            <img src="https://uploads-ssl.webflow.com/646f65e37fe0275cfb808405/646f68133fc5cb4e29ed28fb_akar-icons_circle-check-fill.svg" alt="" class="mr-2 inline-block w-5" />
+            <p>Improved audio quality for clearer, more natural sounds.</p>
+          </div>
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
-  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-14 lg:py-5">
+
+  <div class="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+    <!-- Contact Component -->
     <div class="">
+      <!-- Contact Title -->
       <div class="mx-auto max-w-3xl text-center">
-        <p class="text-3xl font-bold md:text-5xl">Submit Feedback</p>
+        <h2 class="text-3xl font-bold md:text-5xl">Submit Feedback</h2>
         <p class="mx-auto mb-12 mt-4 max-w-xl text-[#647084]">Feel free to let me know if there's anything you'd like to adjust!</p>
       </div>
+      <!-- Contact Form --> 
         <div class="mb-4">
           <label for="field"  class="mb-1 font-medium">Email</label>
           <input type="text"  id="emailField"  class="h-9 w-full bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]" placeholder="" required="" />
@@ -156,289 +284,35 @@ body class="bg-white text-gray-800">
     </div>
   </div>
 </section>
+<!-- Footer Standard Email V2 -->
 <section class="bg-black text-white">
   <div class="flex w-screen flex-col px-6 py-20 lg:px-10 xl:px-24">
+    <!-- TOP CONTAINER -->
     <div class="flex flex-col lg:flex-row lg:justify-between">
+      <!-- LEFT DIV -->
       <div class="flex flex-col lg:mr-20">
+        <!-- LOGO -->
         <a href="#" class="mb-12 inline-block max-w-full font-bold text-[#1353fe]">
           <img src="./img/logo.svg" alt="" class="inline-block max-h-32" />
         </a>
+        <p class="font-inter my-4 max-w-[350px] text-base font-light">AI cloning sound is for personal use only, and any disputes arising during use are not related to this website</p>      
       </div>  
     </div>
-    <div class="mt-20 lg:flex lg:flex-row-reverse lg:justify-between">  
+    <!-- BOTTOM CONTAINER -->
+    <div class="mt-20 lg:flex lg:flex-row-reverse lg:justify-between">
+      
 	<p class="font-inter text-sm text-gray-500 lg:mt-0">© Copyright 2024. All rights reserved.</p>
   </div>
 </section>
 <div style="display: none;">
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDK1YJQG30"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-HDK1YJQG30');
-</script>
-<script>
-	let audioChunks = [];
-		  let audioContext;
-		  let analyser;
-		  let dataArray;
-		  let bufferLength;
-		  let canvasCtx;
-		  let total
-		  let animationId;
-		  let audioBlob = null; 
-		  let stream = null; 
-		  let mediaRecorder = null; 
-		  let downUrl = null; 
-		  const openPopupButton = document.getElementById('openPopupButton');
-		  const closePopupButton = document.getElementById('closePopupButton');
-		  const recordButton = document.getElementById('recordButton');
-		  const popup = document.getElementById('popup');
-		  const overlay = document.getElementById('overlay');
-		  const canvas = document.getElementById('visualizer');
-		  canvasCtx = canvas.getContext('2d');
-		  openPopupButton.addEventListener('click', function(event) {
-		      event.preventDefault();
-			
-		      if (!stream) {
-		          navigator.mediaDevices.getUserMedia({ audio: true })
-		              .then(s => {
-						    popup.style.display = 'block';
-							  overlay.style.display = 'block';
-		                  stream = s;
-		                  setupAudioContext();
-		              })
-		              .catch(error => {
-						
-		                  console.error('Access denied for audio capture:', error);
-		                  alert("Audio capture permission denied.");
-		              });
-		      }
-		  });
-		 
-		  function setupAudioContext() {
-		       if (!audioContext) {
-		             audioContext = new AudioContext();
-		         }
-		         const source = audioContext.createMediaStreamSource(stream);
-		         analyser = audioContext.createAnalyser();
-		         source.connect(analyser);
-		         analyser.fftSize = 2048;
-		         bufferLength = analyser.frequencyBinCount;
-		         dataArray = new Uint8Array(bufferLength);
-		  }
-		  recordButton.addEventListener('click', function(event) {
-		      event.preventDefault(); 
-		      if (mediaRecorder && mediaRecorder.state === 'recording') {
-		          mediaRecorder.stop();
-		          this.textContent = 'Start recording';
-		          cancelAnimationFrame(animationId);
-		      } else {
-		          this.textContent = 'Stop recording';
-		          mediaRecorder = createMediaRecorder(stream);
-		          mediaRecorder.start();
-		          visualize();
-		      }
-		  });
-		  
-		  function createMediaRecorder(stream) {
-		      let newRecorder = new MediaRecorder(stream);
-		      newRecorder.ondataavailable = event => {
-		          audioChunks.push(event.data);
-		          if (newRecorder.state === 'inactive') {
-		              audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-		              const audioUrl = URL.createObjectURL(audioBlob);
-		              const audioPlayer = document.getElementById('audioPlayer');
-		              audioPlayer.src = audioUrl;
-		              audioChunks = [];
-		          }
-		      };
-			  newRecorder.onstop = () => {
-			      stream.getTracks().forEach(track => track.stop());
-			      stream = null;
-			      closePopupButton.click();
-			  };
-		      return newRecorder;
-		  }
-		  function visualize() {
-		      canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-		      function draw() {
-		          animationId = requestAnimationFrame(draw);
-		          analyser.getByteTimeDomainData(dataArray);
-		          canvasCtx.fillStyle = 'rgb(243, 243, 243)';
-		          canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-		          canvasCtx.lineWidth = 2;
-		          canvasCtx.strokeStyle = '#007bff';
-		          canvasCtx.beginPath();
-		          const sliceWidth = canvas.width * 1.0 / bufferLength;
-		          let x = 0;
-		          for (let i = 0; i < bufferLength; i++) {
-		              const v = dataArray[i] / 128.0;
-		              const y = v * canvas.height / 2;
-		              if (i === 0) {
-		                  canvasCtx.moveTo(x, y);
-		              } else {
-		                  canvasCtx.lineTo(x, y);
-		              }
-		              x += sliceWidth;
-		          }
-		          canvasCtx.lineTo(canvas.width, canvas.height / 2);
-		          canvasCtx.stroke();
-		      }
-		      draw();
-		  }
-		    function startCountdown(duration, display) {
-		             var timer = duration, seconds;
-		             var countdownInterval = setInterval(function () {
-		                 seconds = parseInt(timer, 10);
-		                 display.textContent = seconds + ' seconds';
-		 
-		                 if (--timer < 0) {
-		                     clearInterval(countdownInterval);
-		                     document.getElementById('loadingAnimation').classList.add('hidden');
-		                 }
-		             }, 1000);
-		         }
-		 
-	function showLoadingAnimation() {
-	 var display = document.querySelector('#countdown');
-	 startCountdown(30, display);
-	 document.getElementById('loadingAnimation').classList.remove('hidden');
-	}	 
-		function submitForm() {
-			var fileInput = document.getElementById('fileInput');
-			if (audioBlob&&fileInput.files.length != 0) {
-			    document.getElementById('myModal').classList.remove('hidden'); 
-			     return;
-			}
-		    if (!audioBlob&&fileInput.files.length === 0) {
-		       document.getElementById('myModal').classList.remove('hidden');
-		         return;
-		
-		    }
-			var textArea = document.getElementById('textContentId');   
-			if (textArea.value.trim() === "") {
-				 alert('You can enter the text of the recording you want to clone.');
-				 return;
-			}
-			showLoadingAnimation()
-		    document.getElementById('loadingAnimation').classList.remove('hidden');
-		    var form = document.getElementById('audioGenerationForm');
-		    var formData = new FormData(form);
-			if (audioBlob) {
-			   formData.append('myfile', audioBlob, 'recording.wav');  
-			}
-			console.log("start....")
-		    sub(formData)
-		}	
-		var a=0
-		function sub(formData){
-			a=a+1;
-			showLoadingAnimation()
-			fetch('https://aivoiceclonefree.com/upload', {
-			    method: 'POST',
-			    body: formData
-			})
-			.then(response => response.json())
-			.then(data => {
-			    document.getElementById('loadingAnimation').classList.add('hidden');
-			    if (data && data.result) {
-			        const downloadUrl = data.result;
-					if (downloadUrl) {
-							const audioPlayer = document.getElementById('audioPagePlayer');
-							audioPlayer.src = downloadUrl;
-							audioPlayer.style.display = 'block';
-							downUrl=downloadUrl;
-							const downLoadButton = document.getElementById('downLoadButton');
-							downLoadButton.style.display = 'block'; 		
-					} else {
-						if(a<=3){
-							 sub(formData)
-						}
-					
-					}
-			    } else {
-			       if(a<=3){
-			       	 sub(formData)
-			       };
-			    }
-			})
-			.catch(error => {
-			   if(a<=3){
-			   	 sub(formData)
-			   };
-			});
-		}
-		closePopupButton.addEventListener('click', function() {
-		    if (mediaRecorder) {
-		        if (mediaRecorder.state === 'recording') { 
-		            mediaRecorder.stop();
-		            mediaRecorder.onstop = () => {
-		                console.log('Recording stopped and resources released');
-		            };
-		        }
-		        mediaRecorder = null; 
-		    }
-		    if (stream) {
-		        stream.getTracks().forEach(track => track.stop()); 
-		        stream = null; 
-		    }	
-		    if (audioBlob) {
-		        document.getElementById('recordName').textContent = "recording.wav"; 
-		    }
-		    popup.style.display = 'none';
-		    overlay.style.display = 'none';
-		    recordButton.textContent = 'Start recording';
-		    cancelAnimationFrame(animationId); 
-		});
-		   function downLoad() {
-			   const a = document.createElement('a');
-			   a.href = downUrl;
-			   a.download = 'clone.wav';
-			   document.body.appendChild(a);
-			   a.click();
-			   document.body.removeChild(a);
-			   
-		   }
-		   document.addEventListener('DOMContentLoaded', function() {
-		       var textArea = document.getElementById('textContentId');
-		       var messageDiv = document.getElementById('messageDiv');
-		       textArea.addEventListener('input', function() {
-					  var content = this.value;
-					  var chineseCount = (content.match(/[\u4e00-\u9fff]/g) || []).length; 
-					  var nonChineseWords = content.replace(/[\u4e00-\u9fff]/g, ' '); 
-					  var englishWordCount = (nonChineseWords.match(/\b\w+\b/g) || []).length;
-					   total = chineseCount + englishWordCount;
-					  if (total > 50) {
-						  messageDiv.textContent = 'The free version cannot exceed 50 words。';
-						  messageDiv.style.color = 'red';
-					  } else {
-						  messageDiv.textContent = '';
-					  }
-		       });
-		   });
-		   document.getElementById('languageSelect').addEventListener('change', function() {
-		            var textArea = document.getElementById('textContentId');
-		            if (this.value === 'zh_default') {
-		                textArea.placeholder = '您可以输入您想克隆的语音文本。';
-		            } 
-					 if (this.value === 'en_default') {
-						textArea.placeholder = 'You can enter the text of the recording you want to clone.';
-					}
-					if (this.value === 'jp_default') {
-						textArea.placeholder = 'クローンしたい録音のテキストを入力できます。';
-					}
-					if (this.value === 'kr_default') {
-						textArea.placeholder = '복제하고 싶은 녹음의 텍스트를 입력할 수 있습니다.';
-					}
-					if (this.value === 'es_default') {
-						textArea.placeholder = 'Puedes introducir el texto de la grabación que quieres clonar.';
-					}
-					if (this.value === 'fr_default') {
-						textArea.placeholder = "Vous pouvez saisir le texte de l'enregistrement que vous souhaitez cloner.";
-					}		
-		        });
-</script>
+</script>	
 <script>
   kofiWidgetOverlay.draw('fattiger', {
 	'type': 'floating-chat',
@@ -447,6 +321,7 @@ body class="bg-white text-gray-800">
 	'floating-chat.donateButton.text-color': '#fff'
   });
 </script>
-</div>	
+<script src="./js/scripts.js"></script>
+</div>		
 </body>
 </html>
