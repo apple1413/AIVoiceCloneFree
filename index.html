@@ -302,6 +302,158 @@
 			    }
 			    draw();
 			}
+			function startCountdown(duration, display) {
+			             var timer = duration, seconds;
+			             var countdownInterval = setInterval(function () {
+			                 seconds = parseInt(timer, 10);
+			                 display.textContent = seconds + ' seconds';
+			 
+			                 if (--timer < 0) {
+			                     clearInterval(countdownInterval);
+			                     document.getElementById('loadingAnimation').classList.add('hidden');
+			                 }
+			             }, 1000);
+			         }
+			 
+			         function showLoadingAnimation() {
+			             var display = document.querySelector('#countdown');
+			             startCountdown(30, display);
+			             document.getElementById('loadingAnimation').classList.remove('hidden');
+			         }
+					 
+			function submitForm() {
+				var fileInput = document.getElementById('fileInput');
+				if (audioBlob&&fileInput.files.length != 0) {
+				    document.getElementById('myModal').classList.remove('hidden'); 
+				     return;
+				}
+			    if (!audioBlob&&fileInput.files.length === 0) {
+			       document.getElementById('myModal').classList.remove('hidden');
+			         return;
+			
+			    }
+				var textArea = document.getElementById('textContentId');   
+				if (textArea.value.trim() === "") {
+					 alert('You can enter the text of the recording you want to clone.');
+					 return;
+				}
+				showLoadingAnimation()
+			    document.getElementById('loadingAnimation').classList.remove('hidden');
+			    var form = document.getElementById('audioGenerationForm');
+			    var formData = new FormData(form);
+				if (audioBlob) {
+				   formData.append('myfile', audioBlob, 'recording.wav');  
+				}
+				console.log("start....")
+			    sub(formData)
+			}	
+			var a=0
+			function sub(formData){
+				a=a+1;
+				showLoadingAnimation()
+				fetch('https://aivoiceclonefree.com/upload', {
+				    method: 'POST',
+				    body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+				    document.getElementById('loadingAnimation').classList.add('hidden');
+				    if (data && data.result) {
+				        const downloadUrl = data.result;
+						if (downloadUrl) {
+								const audioPlayer = document.getElementById('audioPagePlayer');
+								audioPlayer.src = downloadUrl;
+								audioPlayer.style.display = 'block';
+								downUrl=downloadUrl;
+								const downLoadButton = document.getElementById('downLoadButton');
+								downLoadButton.style.display = 'block'; 		
+						} else {
+							if(a<=3){
+								 sub(formData)
+							}
+						
+						}
+				    } else {
+				       if(a<=3){
+				       	 sub(formData)
+				       };
+				    }
+				})
+				.catch(error => {
+				   if(a<=3){
+				   	 sub(formData)
+				   };
+				});
+			}
+			closePopupButton.addEventListener('click', function() {
+			    if (mediaRecorder) {
+			        if (mediaRecorder.state === 'recording') { 
+			            mediaRecorder.stop();
+			            mediaRecorder.onstop = () => {
+			                console.log('Recording stopped and resources released');
+			            };
+			        }
+			        mediaRecorder = null; 
+			    }
+			    if (stream) {
+			        stream.getTracks().forEach(track => track.stop()); 
+			        stream = null; 
+			    }	
+			    if (audioBlob) {
+			        document.getElementById('recordName').textContent = "recording.wav"; 
+			    }
+			    popup.style.display = 'none';
+			    overlay.style.display = 'none';
+			    recordButton.textContent = 'Start recording';
+			    cancelAnimationFrame(animationId); 
+			});
+			   function downLoad() {
+				   const a = document.createElement('a');
+				   a.href = downUrl;
+				   a.download = 'clone.wav';
+				   document.body.appendChild(a);
+				   a.click();
+				   document.body.removeChild(a);
+				   
+			   }
+			   document.addEventListener('DOMContentLoaded', function() {
+			       var textArea = document.getElementById('textContentId');
+			       var messageDiv = document.getElementById('messageDiv');
+			       textArea.addEventListener('input', function() {
+						  var content = this.value;
+						  var chineseCount = (content.match(/[\u4e00-\u9fff]/g) || []).length; 
+						  var nonChineseWords = content.replace(/[\u4e00-\u9fff]/g, ' '); 
+						  var englishWordCount = (nonChineseWords.match(/\b\w+\b/g) || []).length;
+						   total = chineseCount + englishWordCount;
+						  if (total > 50) {
+							  messageDiv.textContent = 'The free version cannot exceed 50 words。';
+							  messageDiv.style.color = 'red';
+						  } else {
+							  messageDiv.textContent = '';
+						  }
+			       });
+			   });
+			   document.getElementById('languageSelect').addEventListener('change', function() {
+			            var textArea = document.getElementById('textContentId');
+			            if (this.value === 'zh_default') {
+			                textArea.placeholder = '您可以输入您想克隆的语音文本。';
+			            } 
+						 if (this.value === 'en_default') {
+							textArea.placeholder = 'You can enter the text of the recording you want to clone.';
+						}
+						if (this.value === 'jp_default') {
+							textArea.placeholder = 'クローンしたい録音のテキストを入力できます。';
+						}
+						if (this.value === 'kr_default') {
+							textArea.placeholder = '복제하고 싶은 녹음의 텍스트를 입력할 수 있습니다.';
+						}
+						if (this.value === 'es_default') {
+							textArea.placeholder = 'Puedes introducir el texto de la grabación que quieres clonar.';
+						}
+						if (this.value === 'fr_default') {
+							textArea.placeholder = "Vous pouvez saisir le texte de l'enregistrement que vous souhaitez cloner.";
+						}		
+			        });
 		</script>
 	</div>
 </body>
